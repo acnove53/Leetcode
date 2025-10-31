@@ -1,0 +1,23 @@
+class Solution {
+    String str = "";
+    Queue<Integer> strQueue = new LinkedList<>();
+
+    public String encode(List<String> strs) {
+        for (String element : strs) {
+            str += element;
+            strQueue.add(element.length());
+        }
+        return str;
+    }
+
+    public List<String> decode(String str) {
+        List<String> decoded = new ArrayList<>();
+        int i = 0;
+        while (!strQueue.isEmpty()) {
+            int len = strQueue.remove();
+            decoded.add(str.substring(i, i + len));
+            i += len;
+        }
+        return decoded;
+    }
+}
