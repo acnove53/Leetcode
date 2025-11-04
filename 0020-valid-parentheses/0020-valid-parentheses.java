@@ -5,8 +5,7 @@ class Solution {
             return false;
         }
         Stack<Character> open = new Stack<>();
-        for (int i = 0; i < len; i++) {
-            char e = s.charAt(i);
+        for (char e : s.toCharArray()) {
             if (e == '(' || e == '[' || e == '{') {
                 open.push(e);
             } else {
@@ -20,9 +19,6 @@ class Solution {
                 }
             }
         }
-        if (!open.empty()) {
-            return false;
-        }
-        return true;
+       return open.empty();
     }
 }
