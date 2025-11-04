@@ -1,9 +1,5 @@
 class Solution {
     public boolean isValid(String s) {
-        int len = s.length();
-        if (len % 2 != 0) {
-            return false;
-        }
         Stack<Character> open = new Stack<>();
         for (char e : s.toCharArray()) {
             if (e == '(' || e == '[' || e == '{') {
