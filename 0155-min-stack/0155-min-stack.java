@@ -6,21 +6,20 @@ class MinStack {
         stack = new Stack<>();
         minStack = new Stack<>();
     }
-    
+
     public void push(int val) {
         stack.push(val);
-        if (minStack.empty()) {
+        if (minStack.empty() || val <= minStack.peek()) {
             minStack.push(val);
-        } else if (minStack.peek() < val) {
-            minStack.push(minStack.peek());
-        } else {
-            minStack.push(val);
+            System.out.printf("minStack: %d\n", val);
         }
     }
     
     public void pop() {
-        stack.pop();
-        minStack.pop();
+        int temp = stack.pop();
+        if (temp == minStack.peek()) {
+            System.out.printf("pop: %d\n", minStack.pop());
+        }
     }
     
     public int top() {
