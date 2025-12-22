@@ -14,23 +14,26 @@ class TimeMap {
     }
     
     public String get(String key, int timestamp) {
+        
         if (timeMap.containsKey(key)) {
             if (timeMap.get(key).isEmpty()) {
                 return "";
             }
-            String result = "";
             int len = timeMap.get(key).size();
             int l = 0, r = len - 1;
+            int index = -1;
             while (l <= r) {
                 int mid = (r - l) / 2 + l;
                 if (timeMap.get(key).get(mid).getKey() > timestamp) {
                     r = mid - 1;
                 } else {
-                    result = timeMap.get(key).get(mid).getValue();
+                    index = mid;
                     l = mid + 1;
                 }
             }
-            return result;
+            if (index != -1) {
+                return timeMap.get(key).get(index).getValue();
+            }
         }
         return "";
     }
