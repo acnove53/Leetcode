@@ -14,15 +14,17 @@ class TimeMap {
     }
     
     public String get(String key, int timestamp) {
+        
         if (timeMap.containsKey(key)) {
+            if (timeMap.get(key).isEmpty()) {
+                return "";
+            }
             int len = timeMap.get(key).size();
             int l = 0, r = len - 1;
             int index = -1;
             while (l <= r) {
                 int mid = (r - l) / 2 + l;
-                if (timeMap.get(key).get(mid).getKey() == timestamp) {
-                    return timeMap.get(key).get(mid).getValue();
-                } else if (timeMap.get(key).get(mid).getKey() > timestamp) {
+                if (timeMap.get(key).get(mid).getKey() > timestamp) {
                     r = mid - 1;
                 } else {
                     index = mid;
