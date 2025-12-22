@@ -14,11 +14,11 @@ class TimeMap {
     }
     
     public String get(String key, int timestamp) {
-        String result = "";
         if (timeMap.containsKey(key)) {
             if (timeMap.get(key).isEmpty()) {
-                return result;
+                return "";
             }
+            String result = "";
             int len = timeMap.get(key).size();
             int l = 0, r = len - 1;
             while (l <= r) {
@@ -30,8 +30,9 @@ class TimeMap {
                     l = mid + 1;
                 }
             }
+            return result;
         }
-        return result;
+        return "";
     }
 }
 
