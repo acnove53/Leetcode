@@ -15,15 +15,15 @@ class Solution {
         }
 
         ListNode curr = head;
-        ListNode last = new ListNode(head.val, null);
-        ListNode prev = new ListNode(head.val, null);
+        ListNode last = null;
 
-        while (curr.next != null) {
-            prev = new ListNode(curr.next.val, last);
-            last = prev;
-            curr = curr.next;
+        while (curr != null) {
+            ListNode temp = curr.next;
+            curr.next = last;
+            last = curr;
+            curr = temp;
         }
-        return prev;
+        return last;
 
         // Stack<Integer> stack = new Stack<>();
         // ListNode curr = head;
