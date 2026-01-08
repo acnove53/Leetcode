@@ -13,19 +13,31 @@ class Solution {
         if (head == null) {
             return null;
         }
-        Stack<Integer> stack = new Stack<>();
+
         ListNode curr = head;
-        while (curr != null) {
-            stack.push(curr.val);
+        ListNode last = new ListNode(head.val, null);
+        ListNode prev = new ListNode(head.val, null);
+
+        while (curr.next != null) {
+            prev = new ListNode(curr.next.val, last);
+            last = prev;
             curr = curr.next;
         }
+        return prev;
 
-        ListNode res = new ListNode(stack.pop(), null);
-        head = res;
-        while (!stack.isEmpty()) {
-            res.next = new ListNode(stack.pop(), null);
-            res = res.next;
-        }
-        return head;
+        // Stack<Integer> stack = new Stack<>();
+        // ListNode curr = head;
+        // while (curr != null) {
+        //     stack.push(curr.val);
+        //     curr = curr.next;
+        // }
+
+        // ListNode res = new ListNode(stack.pop(), null);
+        // head = res;
+        // while (!stack.isEmpty()) {
+        //     res.next = new ListNode(stack.pop(), null);
+        //     res = res.next;
+        // }
+        // return head;
     }
 }
