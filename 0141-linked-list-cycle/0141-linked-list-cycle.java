@@ -14,17 +14,15 @@ public class Solution {
         if (head == null || head.next == null) {
             return false;
         }
-//10.17 17.4 
         ListNode slow = head;
         ListNode fast = slow;
 
-        while (fast.next != null && fast.next.next != null) {
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
-            if (fast.equals(slow)) {
+            if (fast == slow) {
                 return true;
             }
-            System.out.println("fast=" + fast + "slow=" + slow);
         }
 
         return false;
