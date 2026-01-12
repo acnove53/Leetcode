@@ -10,20 +10,45 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-
         ListNode curr = head;
-        ListNode last = null;
+        ListNode prev = null;
 
         while (curr != null) {
             ListNode temp = curr.next;
-            curr.next = last;
-            last = curr;
+            curr.next = prev;
+            prev = curr;
             curr = temp;
         }
-        return last;
+
+        return prev;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // if (head == null) {
+        //     return null;
+        // }
+
+        // ListNode curr = head;
+        // ListNode last = null;
+
+        // while (curr != null) {
+        //     ListNode temp = curr.next;
+        //     curr.next = last;
+        //     last = curr;
+        //     curr = temp;
+        // }
+        // return last;
 
         // Stack<Integer> stack = new Stack<>();
         // ListNode curr = head;
